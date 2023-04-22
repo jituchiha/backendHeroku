@@ -96,7 +96,7 @@ def unauthorized():
 
 
 
-@app.route('/voprofile',methods= ['GET'])
+@app.route('/https://backend-evenue.herokuapp.com/voprofile',methods= ['GET'])
 def voprofile():
     vo_email = session['email']
     print(vo_email)
@@ -133,7 +133,7 @@ def voprofile():
     return json_data
 
 
-@app.route("/voprofile/<string:event_id>", methods=["PUT"])
+@app.route("/https://backend-evenue.herokuapp.com//voprofile/<string:event_id>", methods=["PUT"])
 def update_event_status(event_id):
     events = mongo.db.voevent  # Replace 'events' with the name of your MongoDB collection
     print("eventId: ",event_id)
@@ -175,7 +175,7 @@ def update_event_status(event_id):
 
 
 
-@app.route('/voview', methods =['POST'])  
+@app.route('/https://backend-evenue.herokuapp.com/voview', methods =['POST'])  
 def voview():
     print(session['email']+" "+"Why is this not printingggg")
     owner_email = session['email']
@@ -296,7 +296,7 @@ def voview():
 #     )
 #     return redirect(request_uri)
 
-@app.route('/login', methods=["POST"])
+@app.route('/https://backend-evenue.herokuapp.com/login', methods=["POST"])
 def login():
 
     # Find out what URL to hit for Google login
@@ -407,7 +407,7 @@ def login():
 
         return response 
     
-@app.route('/register', methods=["POST"])
+@app.route('/https://backend-evenue.herokuapp.com/register', methods=["POST"])
 def register():
     firstname = request.json.get("firstname")
     lastname = request.json.get("lastname")
@@ -464,7 +464,7 @@ def register():
         return response
 
 
-@app.route('/profile')
+@app.route('/https://backend-evenue.herokuapp.com/profile')
 def profile():
     if 'email' in session:
         return {
@@ -475,7 +475,7 @@ def profile():
             "session_email": ""
         }
     
-@app.route('/logout')
+@app.route('/https://backend-evenue.herokuapp.com/logout')
 def logout():
     session.clear()
 
@@ -483,7 +483,7 @@ def logout():
         "message": "Logout successful"
     }
 
-@app.route("/data")
+@app.route("/https://backend-evenue.herokuapp.com/data")
 def get_documents():
 
     name=request.args.get('name',default=None)
@@ -519,7 +519,7 @@ def get_documents():
 
     return jsonify(json_docs)
 
-@app.route('/getbooked')
+@app.route('/https://backend-evenue.herokuapp.com/getbooked')
 def get_avails():
     docs = list(mongo.db.booked.find())
     # print(docs)
@@ -533,7 +533,7 @@ def get_avails():
 
     return jsonify(json_docs)
 
-@app.route('/book_venue', methods=["POST"])
+@app.route('/https://backend-evenue.herokuapp.com/book_venue', methods=["POST"])
 def book_venue():
     name = request.json.get("name")
     location = request.json.get("location")
